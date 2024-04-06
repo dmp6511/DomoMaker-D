@@ -14,6 +14,8 @@ app.get('/getDomos', mid.requiresLogin, controllers.Domo.getDomos);
   app.get('/maker', mid.requiresLogin, controllers.Domo.makerPage);
   app.post('/maker', mid.requiresLogin, controllers.Domo.makeDomo);
 
+  app.get('/leaderboard', mid.requiresLogin, controllers.Leaderboard.leaderboardPage);
+
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
 };
 
