@@ -11,14 +11,16 @@ const handleDomo = (e, onDomoAdded) => {
 
     const name = e.target.querySelector('#domoName').value;
     const age = e.target.querySelector('#domoAge').value;
+    const height = e.target.querySelector('#domoHeight').value;
+    const weight = e.target.querySelector('#domoWeight').value;
 
     // make sure the fields aren't empty
-    if (!name || !age) {
-        helper.handleError('Name or age is empty!');
+    if (!name || !age || !height || !weight) {
+        helper.handleError('All fields are required!');
         return false;
     };
 
-    helper.sendPost(e.target.action, { name, age }, onDomoAdded);
+    helper.sendPost(e.target.action, { name, age, height, weight }, onDomoAdded);
     return false;
 };
 
@@ -36,6 +38,15 @@ const DomoForm = (props) => {
             <input id='domoName' type='text' name='name' placeholder='Domo Name' />
             <label htmlFor='age'>Age: </label>
             <input id='domoAge' type='number' min='0' name='age' />
+
+            {/* add height and weight fields */}
+            <label htmlFor='height'>Height: </label>
+            <input id='domoHeight' type='text' name='height' placeholder="5'10" />
+
+
+            <label htmlFor='weight'>Weight: </label>
+            <input id='domoWeight' type='number' min='0' name='weight' />
+            
             <input className='makeDomoSubmit' type='submit' value='Make Domo' />
         </form>
     );
@@ -69,6 +80,10 @@ const DomoList = (props) => {
                 <img src='/assets/img/domoface.jpeg' alt='domo face' className='domoFace' />
                 <h3 className='domoName'>Name: {domo.name}</h3>
                 <h3 className='domoAge'>Age: {domo.age}</h3>
+
+                {/* add height and weight */}
+                <h3 className='domoHeight'>Height: {domo.height}</h3>
+                <h3 className='domoWeight'>Weight: {domo.weight}</h3>
             </div>
         );
     });

@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const _ = require('underscore');
 
 const setName = (name) => _.escape(name).trim();
+const setHeight = (height) => _.escape(height).trim();
 
 const DomoSchema = new mongoose.Schema({
   name: {
@@ -16,6 +17,20 @@ const DomoSchema = new mongoose.Schema({
     min: 0,
     required: true,
   },
+  // domo maker e add-ons
+  height: {
+    type: String,
+    required: true,
+    trim: true,
+    set: setHeight,
+  },
+  weight: {
+    type: Number,
+    min: 0,
+    required: true,
+  },
+
+
   owner: {
     type: mongoose.Schema.ObjectId,
     required: true,
@@ -30,6 +45,10 @@ const DomoSchema = new mongoose.Schema({
 DomoSchema.statics.toAPI = (doc) => ({
   name: doc.name,
   age: doc.age,
+
+  // add-ons
+  height: doc.height,
+  weight: doc.weight,
 });
 
 const DomoModel = mongoose.model('Domo', DomoSchema);
