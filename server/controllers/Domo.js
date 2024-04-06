@@ -24,6 +24,8 @@ const makeDomo = async (req, res) => {
     const newDomo = new Domo(domoData);
     await newDomo.save();
     return res.status(201).json({ name: newDomo.name, age: newDomo.age });
+
+    
   } catch (err) {
     console.log(err);
     // if the domo already exists

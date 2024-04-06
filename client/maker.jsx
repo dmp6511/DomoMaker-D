@@ -2,6 +2,7 @@
 
 const helper = require('./helper.js');
 const React = require('react');
+const { useState, useEffect } = React;
 const { createRoot } = require('react-dom/client');
 
 const handleDomo = (e, onDomoAdded) => {
@@ -25,8 +26,8 @@ const handleDomo = (e, onDomoAdded) => {
 const DomoForm = (props) => {
     return (
         <form id='domoForm'
+            onSubmit={(e) => handleDomo(e, props.triggerReload)}
             name='domoForm'
-            onSubmit={(e) => handleDomo(e, props.onDomoAdded)}
             action='/maker'
             method='POST'
             className='domoForm'
@@ -42,9 +43,9 @@ const DomoForm = (props) => {
 
 // domo list
 const DomoList = (props) => {
-    const [domos, setDomos] = React.useState(props.domos);
+    const [domos, setDomos] = useState(props.domos);
 
-    React.useEffect(() => {
+    useEffect(() => {
         const loadDomosFromServer = async () => {
             const response = await fetch('/getDomos');
             const data = await response.json();
@@ -52,8 +53,7 @@ const DomoList = (props) => {
         };
 
         loadDomosFromServer();
-    },
-        [props.reloadDomos]);
+    }, [props.reloadDomos]);
 
     if (domos.length === 0) {
         return (
@@ -82,7 +82,7 @@ const DomoList = (props) => {
 };
 
 const App = () => {
-    const [reloadDomos, setReloadDomos] = React.useState(false);
+    const [reloadDomos, setReloadDomos] = useState(false);
 
     return (
         <div>
