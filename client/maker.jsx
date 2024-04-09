@@ -39,14 +39,21 @@ const DomoForm = (props) => {
             <label htmlFor='age'>Age: </label>
             <input id='domoAge' type='number' min='0' name='age' />
 
-            {/* add height and weight fields */}
-            <label htmlFor='height'>Height: </label>
-            <input id='domoHeight' type='text' name='height' placeholder="5'10" />
+            {/* spacing */}
+            <br />
 
+            <div>
+                {/* add height and weight fields */}
+                <label htmlFor='height'>Height: </label>
+                <input id='domoHeight' type='text' name='height' placeholder="5'10" />
+            </div>
 
-            <label htmlFor='weight'>Weight: </label>
-            <input id='domoWeight' type='number' min='0' name='weight' />
-            
+            <div>
+                <label htmlFor='weight'>Weight: </label>
+                <input id='domoWeight' type='number' min='0' name='weight' />
+            </div>
+            <br />
+
             <input className='makeDomoSubmit' type='submit' value='Make Domo' />
         </form>
     );

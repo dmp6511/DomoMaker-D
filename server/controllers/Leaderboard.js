@@ -4,7 +4,7 @@ const models = require('../models');
 const { Account, Domo } = models;
 
 const leaderboardPage = (req, res) => {
-    return res.render('app');
+    return res.render('leaderboard');
 };
 
 

@@ -11,6 +11,27 @@ const App = (props) => {
     return (
         <div>
             <h1>Leaderboard</h1>
+            <h2>Here are the users with the most Domos</h2>
+
+            <div id='leaderboard'>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Domos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {/* leaderboard will go here */}
+                        {/* get users names and domo counts */}
+                        {/* loop through the users and display their names and domo counts */}
+                        <tr>
+                            <td>username</td>
+                            <td>domo count</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };
